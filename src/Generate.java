@@ -8,7 +8,7 @@ public class Generate {
         SimpleStringPBEConfig config = new SimpleStringPBEConfig();
 
         config.setPassword("supertajnehaslo");
-        config.setAlgorithm("PBEWithMD5AndDES");
+        config.setAlgorithm("PBEWithHMACSHA512AndAES_256");
         config.setKeyObtentionIterations("1000");
         config.setPoolSize("1");
         config.setStringOutputType("base64");

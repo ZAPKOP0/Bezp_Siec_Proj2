@@ -10,7 +10,7 @@ public class CryptoConfig {
         SimpleStringPBEConfig config = new SimpleStringPBEConfig();
 
         config.setPassword(password);
-        config.setAlgorithm("PBEWithMD5AndDES");
+        config.setAlgorithm("PBEWithHMACSHA512AndAES_256");
         config.setKeyObtentionIterations("1000");
         config.setPoolSize("1");
         config.setStringOutputType("base64");

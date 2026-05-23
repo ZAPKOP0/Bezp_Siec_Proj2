@@ -1,5 +1,4 @@
 import org.jasypt.encryption.pbe.PooledPBEStringEncryptor;
-import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
 
 import java.io.FileInputStream;
 import java.util.Properties;
@@ -19,6 +18,10 @@ public class CredentialManager {
 
         username = encryptor.decrypt(properties.getProperty("encrypted.username"));
         password = encryptor.decrypt(properties.getProperty("encrypted.password"));
+
+        System.out.println("USER = " + username);
+        System.out.println("PASSWORD = " + password);
+
     }
 
     public String getUsername() {
