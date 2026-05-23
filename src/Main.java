@@ -2,7 +2,7 @@ import org.h2.tools.Server;
 
 import java.util.Scanner;
 
-public class V1 {
+public class Main {
 
     public static void main(
             String[] args
