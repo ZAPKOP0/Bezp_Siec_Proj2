@@ -60,9 +60,6 @@ public class Main {
                         )
                 );
 
-                System.out.println(
-                        "Użytkownik został zapisany."
-                );
             }
 
         } catch (Exception e) {
