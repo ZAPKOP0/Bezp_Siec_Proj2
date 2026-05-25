@@ -12,19 +12,16 @@ public class CryptoConfig {
 
         switch (option) {
 
-            // V1 - zmienna środowiskowa
             case 1:
                 password = System.getenv("ENCRYPTOR_PASSWORD");
                 break;
 
-            // V2 - plik .env
             case 2:
                 Map<String, String> env = EnvLoader.load();
 
                 password = env.get("ENCRYPTOR_PASSWORD");
                 break;
 
-            // V3 - podanie podczas uruchomienia
             case 3:
 
                 Scanner scanner = new Scanner(System.in);
