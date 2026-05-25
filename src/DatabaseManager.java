@@ -4,13 +4,14 @@ import java.sql.Statement;
 
 public class DatabaseManager {
 
+    private final CredentialManager credentials;
     private Connection connection;
 
-    public void connect()
-            throws Exception {
+    public DatabaseManager(CredentialManager credentials) {
+        this.credentials = credentials;
+    }
 
-        CredentialManager credentials =
-                new CredentialManager();
+    public void connect() throws Exception {
 
         connection =
                 DriverManager.getConnection(
@@ -22,8 +23,7 @@ public class DatabaseManager {
         createTable();
     }
 
-    private void createTable()
-            throws Exception {
+    private void createTable() throws Exception {
 
         String sql = """
                 CREATE TABLE IF NOT EXISTS users(
@@ -38,7 +38,6 @@ public class DatabaseManager {
 
         statement.execute(sql);
     }
-
 
     public Connection getConnection() {
         return connection;

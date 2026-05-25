@@ -8,20 +8,43 @@ public class CredentialManager {
     private final String username;
     private final String password;
 
-    public CredentialManager() throws Exception {
+    private CredentialManager(String username,
+                              String password) {
+
+        this.username = username;
+        this.password = password;
+    }
+
+    public static CredentialManager fromEncryptedFile(int option)
+            throws Exception {
 
         Properties properties = new Properties();
 
-        properties.load(new FileInputStream("encrypted.properties"));
+        properties.load(
+                new FileInputStream("encrypted.properties")
+        );
 
-        PooledPBEStringEncryptor encryptor = CryptoConfig.getEncryptor();
+        PooledPBEStringEncryptor encryptor =
+                CryptoConfig.getEncryptor(option);
 
-        username = encryptor.decrypt(properties.getProperty("encrypted.username"));
-        password = encryptor.decrypt(properties.getProperty("encrypted.password"));
+        String username =
+                encryptor.decrypt(
+                        properties.getProperty(
+                                "encrypted.username"
+                        )
+                );
 
-        System.out.println("USER = " + username);
-        System.out.println("PASSWORD = " + password);
+        String password =
+                encryptor.decrypt(
+                        properties.getProperty(
+                                "encrypted.password"
+                        )
+                );
 
+        return new CredentialManager(
+                username,
+                password
+        );
     }
 
     public String getUsername() {
